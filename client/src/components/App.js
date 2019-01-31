@@ -36,7 +36,8 @@ class App extends Component {
 		return (
 			<div>
 				<p>Quest</p>
-				<Task title="Zakupy" text="Dwa jabłka, i gruszka" />
+				{/* <Task title="Zakupy" text="Dwa jabłka, i gruszka" /> */}
+				<Task />
 				<p className="App-intro">{this.state.data}</p>
 			</div>
 		);
