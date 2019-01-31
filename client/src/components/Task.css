@@ -1,0 +1,41 @@
+.task-container {
+	background-color: grey;
+	padding: 5px 10px 5px 10px;
+	color: white;
+	display: flex;
+	justify-content: space-between;
+}
+.task-container .task-title,
+.task-container .task-text {
+	opacity: .7;
+}
+.task-container .buttons-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+.task-container .buttons-container .button {
+	cursor: pointer;
+	text-align: center;
+	padding: 1px;
+	border: 1px solid white;
+	font-size: 15px;
+	transition: .5s all;
+}
+.task-container .buttons-container .button:hover {
+	border: 1px solid black;
+	color: black;
+}
+.task-container .task-content {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.task-container .category-circle {
+	width: 24px;
+	height: 24px;
+	background-color: red;
+	border-radius: 50%;
+	border: 3px solid black;
+	margin-right: 10px;
+}
