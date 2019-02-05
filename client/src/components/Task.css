@@ -43,6 +43,7 @@
 	background-color: #7c7c7c;
 	border: none;
 	padding: 2px;
+	margin: 1px;
 
 	color: #ddf2eb;
 	font-size: 20px;
@@ -52,6 +53,7 @@
 	display: block;
 	font-size: 15px;
 	max-height: 114px;
+
 	font-weight: inherit;
 	overflow: hidden;
 }
@@ -63,6 +65,9 @@
 .task-container .task-content .input:hover,
 .task-container .task-content .text-area:hover {
 	background-color: #a7bed3;
+	cursor: pointer;
+}
+.task-container .category-circle:hover {
 	cursor: pointer;
 }
 .task-container .category-circle {
