@@ -3,7 +3,8 @@ import React from 'react';
 import './Task.css';
 
 const Task = (props) => {
-	const { id, title, text, category } = props.task;
+	const { id, title, text, category, creationDate } = props.task;
+
 	return (
 		<div className="task-container">
 			<div className="task-content">
@@ -18,7 +19,11 @@ const Task = (props) => {
 						value={title}
 						onChange={() => props.handleEditClick(id)}
 					/>
-					<p>{category}</p>
+
+					<p>
+						{creationDate}, {category}
+					</p>
+
 					<textarea
 						className="text-area"
 						name="task-text"

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import TaskList from './TaskList';
 import AddTask from './AddTask';
-import Task from './Task';
 
 import './App.css';
+import { doesNotReject } from 'assert';
 
 class App extends Component {
+	counter = 4;
 	state = {
 		data: null,
 		tasks: [
@@ -14,23 +15,30 @@ class App extends Component {
 				title: 'Tytul0',
 				text: 'tekst0',
 				category: 'kategoria0',
-				date: null
+				creationDate: '2018-02-15',
+				finishDate: null,
+				done: false
 			},
 			{
 				id: 1,
 				title: 'Tytul1',
 				text: 'tekst1',
 				category: 'kategoria1',
-				date: null
+				creationDate: '2018-02-16',
+				finishDate: null,
+				done: false
 			},
 			{
 				id: 3,
-				title: 'Tytul3',
-				text: 'tekst3',
-				category: 'kategoria3',
-				date: null
+				title: 'Tytul2',
+				text: 'tekst2',
+				category: 'kategoria2',
+				creationDate: '2018-02-10',
+				finishDate: null,
+				done: false
 			}
-		]
+		],
+		tasksHistory: []
 	};
 
 	componentDidMount() {
@@ -51,16 +59,51 @@ class App extends Component {
 		return body;
 	};
 
-	handleAddTask = (e, id, title, text, category, creationDate) => {
+	handleAddTask = (title, text, category) => {
 		console.log('Dodajemy nowy elem');
+
+		const newTask = {
+			id: this.counter,
+			title,
+			text,
+			category,
+			done: false,
+			finishDate: null,
+			creationDate: new Date().getTime()
+			// new Date().toLocaleDateString().slice(0, 10) + ', ' + new Date().toLocaleTimeString().slice(0, 5)
+		};
+		const newTasksList = [ ...this.state.tasks ];
+		newTasksList.push(newTask);
+
+		this.setState({
+			tasks: newTasksList
+		});
+		this.counter++;
+		return true;
 	};
 
 	handleDeleteClick = (id) => {
-		console.log('usuwam' + id);
+		this.handleTaskDone(id);
+
 		let tasks = this.state.tasks.filter((task) => task.id !== id);
 
 		this.setState({
 			tasks
+		});
+	};
+
+	handleTaskDone = (id) => {
+		const tasks = Array.from(this.state.tasks);
+		tasks.forEach((task) => {
+			if (task.id === id) {
+				task.done = true;
+				task.finishDate = new Date().getTime();
+				// let tasksHistory = this.state.tasksHistory.push(task);
+
+				this.setState((prevState) => ({
+					tasksHistory: [ ...prevState.tasksHistory, task ]
+				}));
+			}
 		});
 	};
 
@@ -99,12 +142,13 @@ class App extends Component {
 		console.log(this.state.tasks);
 
 		return (
-			<div>
+			<div className="tasks-container">
 				<AddTask handleAddTask={this.handleAddTask} />
 				<TaskList
 					tasks={this.state.tasks}
 					handleDeleteClick={this.handleDeleteClick}
 					handleEditClick={this.handleEditClick}
+					handleTaskDone={this.handleTaskDone}
 				/>
 			</div>
 		);

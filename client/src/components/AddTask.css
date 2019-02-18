@@ -1,0 +1,54 @@
+* {
+	--colorBlue: #083d77;
+	--colorRed: rgba(255, 62, 65, 1);
+	--colorGrey: rgba(74, 74, 74, 1);
+	--colorDarkerGrey: rgba(34, 34, 34, 1);
+	--colorWhite: rgba(238, 245, 219, 1);
+
+	color: var(--colorWhite);
+}
+
+.addTask-container {
+	box-sizing: border-box;
+
+	padding: 5px 10px 5px 10px;
+	border-radius: 5px;
+	margin: 10px;
+
+	background-color: var(--colorBlue);
+	/* display: flex;
+	flex-direction: column;
+	justify-content: space-between; */
+}
+
+.addTask-container .addTask-content .addTask-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: stretch;
+}
+.addTask-container .addTask-content .addTask-form input,
+.addTask-container .addTask-content .addTask-form textarea,
+.addTask-container .addTask-content .addTask-form select {
+	color: var(--colorDarkerGrey);
+	font-size: 18px;
+	margin: 3px 0 3px 0;
+}
+.addTask-container .addTask-content .addTask-form select option {
+	color: var(--colorDarkerGrey);
+}
+.addTask-container .addTask-content .addTask-form textarea {
+	/* flex-basis: 45%; */
+}
+
+.addTask-container .addTask-content .button {
+	margin: 3px 0 3px 0;
+	display: inline-block;
+	cursor: pointer;
+	text-align: center;
+	padding: 2px;
+	border: 1px solid var(--colorWhite);
+	color: var(--colorDarkerGrey);
+	font-size: 15px;
+	transition: .5s all;
+}

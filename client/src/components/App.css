@@ -2,4 +2,13 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+
+	--colorDarkBlue: rgba(1, 22, 39, 1);
+	--colorRed: rgba(255, 62, 65, 1);
+	--colorWhite1: rgba(253, 255, 252, 1);
+	--colorBlue: rgba(46, 196, 182, 1);
+	--colorWhite: rgba(238, 245, 219, 1);
+}
+.tasks-container {
+	background-color: var(--darkBlue);
 }

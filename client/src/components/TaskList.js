@@ -18,12 +18,15 @@ import Task from './Task';
 const TaskList = (props) => {
 	console.log(props.tasks);
 
+	props.tasks.sort((a, b) => b.creationDate - a.creationDate);
+
 	const tasks = props.tasks.map((task) => (
 		<Task
 			key={task.id}
 			task={task}
 			handleDeleteClick={props.handleDeleteClick}
 			handleEditClick={props.handleEditClick}
+			handleTaskDone={props.handleTaskDone}
 		/>
 	));
 
