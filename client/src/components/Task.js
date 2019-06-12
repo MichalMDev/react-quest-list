@@ -32,13 +32,13 @@ const Task = (props) => {
 						onChange={() => props.handleEditClick(id)}
 					/>
 				</div>
-			</div>
-			<div className="buttons-container">
-				<div className="button" onClick={() => props.handleDeleteClick(id)}>
-					X
-				</div>
-				<div className="button" onClick={() => props.handleEditClick(id)}>
-					Edit
+				<div className="buttons-container">
+					<div className="button" onClick={() => props.handleDeleteClick(id)}>
+						X
+					</div>
+					<div className="button" onClick={() => props.handleEditClick(id)}>
+						Edit
+					</div>
 				</div>
 			</div>
 		</div>

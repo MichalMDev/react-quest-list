@@ -145,13 +145,15 @@ class App extends Component {
 		return (
 			<div className="app-container">
 				<Menu />
-				<AddTask handleAddTask={this.handleAddTask} />
-				<TaskList
-					tasks={this.state.tasks}
-					handleDeleteClick={this.handleDeleteClick}
-					handleEditClick={this.handleEditClick}
-					handleTaskDone={this.handleTaskDone}
-				/>
+				<div className="interface-container">
+					<AddTask handleAddTask={this.handleAddTask} />
+					<TaskList
+						tasks={this.state.tasks}
+						handleDeleteClick={this.handleDeleteClick}
+						handleEditClick={this.handleEditClick}
+						handleTaskDone={this.handleTaskDone}
+					/>
+				</div>
 			</div>
 		);
 

@@ -52,37 +52,34 @@ class AddTask extends Component {
 		const { text, title } = this.state;
 		return (
 			<div className="addTask-container">
-				<div className="addTask-content">
-					<div className="category-circle" />
-					<div className="addTask-form">
-						<input
-							className="input"
-							type="text"
-							name="task-title"
-							placeholder="Task title"
-							value={title}
-							onChange={this.handleChange}
-						/>
-						<textarea
-							className="text-area"
-							name="task-text"
-							id=""
-							cols="10"
-							rows="2"
-							placeholder="Enter task"
-							value={text}
-							onChange={this.handleChange}
-						/>
-						<select name="category" id="" onChange={this.handleChange}>
-							<option value="shopping" />
-							<option value="shopping">shopping</option>
-							<option value="work">work</option>
-							<option value="hobby">hobby</option>
-						</select>
-						<button className="button" onClick={this.handleAddTask}>
-							Add Task
-						</button>
-					</div>
+				<div className="addTask-form">
+					<input
+						className="input"
+						type="text"
+						name="task-title"
+						placeholder="Task title"
+						value={title}
+						onChange={this.handleChange}
+					/>
+					<textarea
+						className="text-area"
+						name="task-text"
+						id=""
+						cols="10"
+						rows="2"
+						placeholder="Enter task"
+						value={text}
+						onChange={this.handleChange}
+					/>
+					<select name="category" id="" onChange={this.handleChange}>
+						<option value="shopping" />
+						<option value="shopping">shopping</option>
+						<option value="work">work</option>
+						<option value="hobby">hobby</option>
+					</select>
+					<button className="button" onClick={this.handleAddTask}>
+						Add Task
+					</button>
 				</div>
 			</div>
 		);

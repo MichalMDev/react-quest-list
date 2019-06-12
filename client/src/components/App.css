@@ -2,9 +2,15 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+}
+html {
 	background-color: #111111;
 }
 .app-container {
 	width: 80%;
 	margin: auto;
+}
+.interface-container {
+	background-color: #222222;
+	padding: 5px;
 }

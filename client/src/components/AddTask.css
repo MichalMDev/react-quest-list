@@ -13,34 +13,30 @@
 
 	padding: 5px 10px 5px 10px;
 
-	margin: 10px;
-
 	background-color: #222222;
-
-	/* display: flex;
-	flex-direction: column;
-	justify-content: space-between; */
 }
 
-.addTask-container .addTask-content .addTask-form {
-	padding: 10px;
+.addTask-container .addTask-form {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: stretch;
+	padding: 10px;
+	background-color: transparent;
 }
-.addTask-container .addTask-content .addTask-form input,
-.addTask-container .addTask-content .addTask-form textarea,
-.addTask-container .addTask-content .addTask-form select {
+.addTask-container .addTask-form input,
+.addTask-container .addTask-form textarea,
+.addTask-container .addTask-form select {
+	display: block;
 	color: #e7e7e7;
 	font-size: 18px;
 	margin: 3px 0 3px 0;
 	border-radius: 15px;
 
-	background-color: transparent;
 	padding: 3px;
 	outline: none;
 	border: 1px solid;
+	background-color: transparent;
 }
 ::placeholder {
 	color: #e7e7e7;
@@ -50,14 +46,14 @@ select {
 	outline: none;
 	border: none;
 }
-.addTask-container .addTask-content .addTask-form select option {
+.addTask-container .addTask-form select option {
 	color: var(--colorDarkerGrey);
 }
-.addTask-container .addTask-content .addTask-form textarea {
+.addTask-container .addTask-form textarea {
 	/* flex-basis: 45%; */
 }
 
-.addTask-container .addTask-content .button {
+.addTask-container .button {
 	width: 20%;
 	margin: 3px 0 3px 0;
 	display: inline-block;
@@ -69,4 +65,5 @@ select {
 	font-size: 15px;
 	transition: .5s all;
 	background-color: transparent;
+	outline: none;
 }
