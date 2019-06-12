@@ -30,7 +30,7 @@ const TaskList = (props) => {
 		/>
 	));
 
-	return <div>{tasks}</div>;
+	return <div className="tasks-container">{tasks}</div>;
 };
 
 export default TaskList;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TaskList from './TaskList';
 import AddTask from './AddTask';
+import Menu from './Menu';
 
 import './App.css';
 import { doesNotReject } from 'assert';
@@ -142,7 +143,8 @@ class App extends Component {
 		console.log(this.state.tasks);
 
 		return (
-			<div className="tasks-container">
+			<div className="app-container">
+				<Menu />
 				<AddTask handleAddTask={this.handleAddTask} />
 				<TaskList
 					tasks={this.state.tasks}

@@ -5,23 +5,25 @@
 	--colorDarkerGrey: rgba(34, 34, 34, 1);
 	--colorWhite: rgba(238, 245, 219, 1);
 
-	color: var(--colorWhite);
+	color: #e7e7e7;
 }
 
 .addTask-container {
 	box-sizing: border-box;
 
 	padding: 5px 10px 5px 10px;
-	border-radius: 5px;
+
 	margin: 10px;
 
-	background-color: var(--colorBlue);
+	background-color: #222222;
+
 	/* display: flex;
 	flex-direction: column;
 	justify-content: space-between; */
 }
 
 .addTask-container .addTask-content .addTask-form {
+	padding: 10px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -30,9 +32,23 @@
 .addTask-container .addTask-content .addTask-form input,
 .addTask-container .addTask-content .addTask-form textarea,
 .addTask-container .addTask-content .addTask-form select {
-	color: var(--colorDarkerGrey);
+	color: #e7e7e7;
 	font-size: 18px;
 	margin: 3px 0 3px 0;
+	border-radius: 15px;
+
+	background-color: transparent;
+	padding: 3px;
+	outline: none;
+	border: 1px solid;
+}
+::placeholder {
+	color: #e7e7e7;
+}
+select {
+	color: #e7e7e7;
+	outline: none;
+	border: none;
 }
 .addTask-container .addTask-content .addTask-form select option {
 	color: var(--colorDarkerGrey);
@@ -42,13 +58,15 @@
 }
 
 .addTask-container .addTask-content .button {
+	width: 20%;
 	margin: 3px 0 3px 0;
 	display: inline-block;
 	cursor: pointer;
 	text-align: center;
 	padding: 2px;
-	border: 1px solid var(--colorWhite);
-	color: var(--colorDarkerGrey);
+	border: 1px solid;
+	border-radius: 15px;
 	font-size: 15px;
 	transition: .5s all;
+	background-color: transparent;
 }

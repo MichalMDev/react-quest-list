@@ -1,26 +1,31 @@
 * {
 	--colorBlue: #083d77;
 	--colorRed: rgba(255, 62, 65, 1);
-	--colorGrey: rgba(74, 74, 74, 1);
+	--colorGrey: rgba(74, 74, 74, 0.5);
 	--colorDarkerGrey: rgba(34, 34, 34, 1);
 	--colorWhite: rgba(238, 245, 219, 1);
 
 	color: var(--colorWhite);
 }
+.tasks-container {
+	background-color: #222222;
+	padding: 5px 10px 5px 10px;
 
+	margin: 10px;
+}
 .task-container {
 	box-sizing: border-box;
 
 	padding: 5px 10px 5px 10px;
 	border-radius: 5px;
-	margin: 10px;
-	color: var(--colorWhite);
-	/* background-color: var(--colorBlue); */
+	margin-bottom: 5px;
+	color: #e7e7e7;
+
 	display: flex;
 	justify-content: space-between;
 }
 .task-container {
-	background-color: var(--colorGrey);
+	/* background-color: var(--colorGrey); */
 }
 .task-container .task-title,
 .task-container .task-text {
@@ -36,8 +41,9 @@
 	cursor: pointer;
 	text-align: center;
 	padding: 1px;
-	border: 1px solid var(--colorWhite);
-	color: var(--colorWhite);
+	border: 1px solid #e7e7e7;
+
+	color: #e7e7e7;
 	font-size: 15px;
 	transition: .5s all;
 }
@@ -48,27 +54,28 @@
 
 .task-container .task-content {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
 }
+
 .task-container .task-content .input,
 .task-container .task-content .text-area {
 	opacity: .7;
 	outline: none;
-	font-weight: bold;
+
 	font-family: Arial, Helvetica, sans-serif;
-	background-color: var(--colorGrey);
+
 	border: none;
 	padding: 2px;
 	margin: 1px;
-	color: var(--colorWhite);
+	color: #e7e7e7;
 	font-size: 20px;
-	width: 100%;
 }
 .task-container .task-content .text-area {
 	display: block;
 	font-size: 15px;
 	max-height: 114px;
+	width: 100%;
 
 	font-weight: inherit;
 	overflow: hidden;
@@ -83,15 +90,4 @@
 .task-container .task-content .text-area:hover {
 	background-color: var(--colorDarkerGrey);
 	cursor: pointer;
-}
-.task-container .category-circle:hover {
-	cursor: pointer;
-}
-.task-container .category-circle {
-	min-width: 24px;
-	min-height: 24px;
-	background-color: red;
-	border-radius: 50%;
-	border: 3px solid black;
-	margin-right: 10px;
 }

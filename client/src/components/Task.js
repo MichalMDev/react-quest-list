@@ -8,9 +8,7 @@ const Task = (props) => {
 	return (
 		<div className="task-container">
 			<div className="task-content">
-				<div className="category-circle" />
-
-				<div>
+				<div className="task-details-container">
 					<input
 						className="input"
 						type="text"
