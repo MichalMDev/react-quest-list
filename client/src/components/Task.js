@@ -47,7 +47,7 @@ const Task = (props) => {
 				</div>
 				<div className="buttons-container">
 					<div className="button" onClick={() => props.handleDeleteClick(id)}>
-						X
+						<i class="flaticon flaticon-delete" />
 					</div>
 					<div className="button" onClick={() => props.handleEditClick(id)}>
 						Edit

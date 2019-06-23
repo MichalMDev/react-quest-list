@@ -21,7 +21,6 @@
 }
 
 .tasks-container .task-container .task-content {
-	padding: 10px;
 	display: flex;
 	justify-content: space-between;
 }
@@ -29,10 +28,7 @@
 .tasks-container .task-container .task-content .task-details-container {
 	flex-grow: 1;
 }
-.task-container .task-content .task-title,
-.task-container .task-content .task-text {
-	opacity: .7;
-}
+
 div.tasks-container .buttons-container {
 	display: flex;
 	flex-direction: column;
@@ -43,15 +39,12 @@ div.tasks-container .buttons-container {
 	cursor: pointer;
 	text-align: center;
 	padding: 1px;
-	border: 1px solid #e7e7e7;
-
 	color: #e7e7e7;
 	font-size: 15px;
 	transition: .5s all;
 }
 .task-container .buttons-container .button:hover {
-	border: 1px solid black;
-	color: var(--colorDarkerGrey);
+	border: 0px solid black;
 }
 
 .task-container .task-content .input,
@@ -73,13 +66,10 @@ div.tasks-container .buttons-container {
 	font-size: 15px;
 	max-height: 114px;
 	width: 100%;
-
-	font-weight: inherit;
-	overflow: hidden;
 }
 .task-container .task-content .input:focus,
 .task-container .task-content .text-area:focus {
-	margin: 0;
+	margin: 1px;
 }
 .task-container .task-content .input:hover,
 .task-container .task-content .text-area:hover {

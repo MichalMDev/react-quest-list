@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TaskList from './TaskList';
 import AddTask from './AddTask';
 import Menu from './Menu';
+import './icons/font/flaticon.css';
 
 import './App.css';
 import { doesNotReject } from 'assert';
