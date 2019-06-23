@@ -10,7 +10,17 @@ class AddTask extends Component {
 		text: '',
 		title: '',
 		category: '',
-		creationDate: this.date
+		//creationDate: this.date
+		creationDate:
+			new Date().getFullYear() +
+			'-' +
+			new Date().getMonth() +
+			'-' +
+			new Date().getDay() +
+			', ' +
+			new Date().getHours() +
+			':' +
+			new Date().getMinutes()
 	};
 	handleChange = (e) => {
 		switch (e.target.name) {
@@ -33,15 +43,16 @@ class AddTask extends Component {
 		}
 	};
 	handleAddTask = () => {
-		const { title, text, category } = this.state;
+		const { title, text, category, creationDate } = this.state;
 		if (text.length > 3) {
-			const add = this.props.handleAddTask(title, text, category);
+			const add = this.props.handleAddTask(title, text, category, creationDate);
 			if (add) {
 				this.setState({
 					id: null,
 					text: '',
 					title: '',
-					category: ''
+					category: '',
+					creationDate
 				});
 			} else {
 				alert('Za króka notatka');

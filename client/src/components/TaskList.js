@@ -24,6 +24,7 @@ const TaskList = (props) => {
 		<Task
 			key={task.id}
 			task={task}
+			creationDate={props.creationDate}
 			handleDeleteClick={props.handleDeleteClick}
 			handleEditClick={props.handleEditClick}
 			handleTaskDone={props.handleTaskDone}
