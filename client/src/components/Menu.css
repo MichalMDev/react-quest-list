@@ -14,14 +14,53 @@
 }
 .nav-container {
 	width: 100%;
+	margin-bottom: 5px;
 }
 .nav .navMessage {
 	font-weight: bold;
 }
+.nav-container .login-container {
+	
+	display: flex;
+	justify-content: space-around;
+}
+.nav-container .login-container input {
+	display: block;
+	color: #e7e7e7;
+	font-size: 12px;
+	margin: 3px;
+	border-radius: 15px;
+	
+	padding-left: 8px;
+	outline: none;
+	border: 1px solid;
+	background-color: transparent;
+}
+
+.nav-container .login-container .loginButton{
+	width: 15%;
+	margin: 5px 0px 5px 20px;
+	display: inline-block;
+	cursor: pointer;
+	text-align: center;
+	padding: 8px;
+	border: 1px solid;
+	border-radius: 15px;
+	font-size: 15px;
+	transition: .5s all;
+	background-color: transparent;
+	outline: none;
+}
+.nav-container .login-container .loginButton:hover{
+		
+			background-color: white;
+			color: var(--colorDarkerGrey);
+		
+	}
 .nav ul {
 	display: flex;
 
-	justify-content: flex-end;
+	justify-content: space-between;
 	list-style: none;
 }
 
