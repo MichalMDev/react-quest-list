@@ -8,19 +8,24 @@ const Menu = () => {
 			<div class="nav-container">
 				<ul>
 					<li>
-						<a href="#">
+						<a href="/tasks">
 							<i class="flaticon flaticon-list" />
 							Tasks
 						</a>
 					</li>
-
 					<li>
-						<a href="#">
+						<a href="/about">
+							<i class="" />About
+						</a>
+					</li>
+					<li>
+						<a href="/logout">
 							<i class="flaticon flaticon-logout" />Log Out
 						</a>
 					</li>
 				</ul>
 			</div>
+			<p class="navMessage">Hi Michał!</p>
 		</nav>
 	);
 };

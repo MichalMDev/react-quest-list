@@ -5,7 +5,6 @@ import Menu from './Menu';
 import './icons/font/flaticon.css';
 
 import './App.css';
-import { doesNotReject } from 'assert';
 
 class App extends Component {
 	counter = 4;
@@ -52,8 +51,9 @@ class App extends Component {
 		console.log('Edycja App js');
 	}
 	getTasks = async () => {
-		const response = await fetch('/tasks');
+		const response = await fetch('localhost:4000/tasks');
 		const body = await response.json();
+		console.log(body);
 
 		if (response.status !== 200) {
 			throw Error(body.message);
@@ -130,9 +130,7 @@ class App extends Component {
 		// }
 	};
 
-	// callBackendTasks1 = async () => {
-	// 	const response = await fetch('/tasks1');
-	// 	const body = await response.json();
+	
 
 	// 	if (response.status !== 200) {
 	// 		throw Error(body.message);

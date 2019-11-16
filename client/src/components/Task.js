@@ -3,7 +3,7 @@ import React from 'react';
 import './Task.css';
 
 const Task = (props) => {
-	const { id, title, text, category, creationDate } = props.task;
+	let { id, title, text, category, creationDate } = props.task;
 
 	let year = new Date(creationDate).getFullYear();
 	let month = new Date(creationDate).getUTCMonth() + 1;
@@ -18,39 +18,24 @@ const Task = (props) => {
 	}
 	let data = year + '-' + month + '-' + day + ', ' + hours + ':' + minutes;
 
+	if (category==='none') {category='';} else {category =", "+ category}
+
 	return (
 		<div className="task-container">
 			<div className="task-content">
 				<div className="task-details-container">
-					<input
-						className="input"
-						type="text"
-						name="task-title"
-						id={id}
-						value={title}
-						onChange={() => props.handleEditClick(id)}
-					/>
+					<input className="input" type="text" name="task-title" id={id} value={title} />
 
 					<p>
-						{data}, {category}
+						{data}{category}
 					</p>
 
-					<textarea
-						className="text-area"
-						name="task-text"
-						id=""
-						cols="10"
-						rows="2"
-						value={text}
-						onChange={() => props.handleEditClick(id)}
-					/>
+					{/* <textarea className="text-area" name="task-text" id="" cols="10" rows="2" value={text} /> */}
+					<div className="text-area">{text}</div>
 				</div>
 				<div className="buttons-container">
 					<div className="button" onClick={() => props.handleDeleteClick(id)}>
 						<i class="flaticon flaticon-delete" />
-					</div>
-					<div className="button" onClick={() => props.handleEditClick(id)}>
-						Edit
 					</div>
 				</div>
 			</div>

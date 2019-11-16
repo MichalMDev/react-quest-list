@@ -59,6 +59,9 @@ class AddTask extends Component {
 			}
 		}
 	};
+
+	
+	 
 	render() {
 		const { text, title } = this.state;
 		return (
@@ -74,22 +77,22 @@ class AddTask extends Component {
 					/>
 					<textarea
 						className="text-area"
+						id="txtArea"
 						name="task-text"
-						id=""
-						cols="10"
-						rows="2"
+												cols="10"
+						rows="3"
 						placeholder="Enter task"
 						value={text}
 						onChange={this.handleChange}
 					/>
 					<select name="category" id="" onChange={this.handleChange}>
-						<option value="shopping" />
+						<option value="none">none</option> />
 						<option value="shopping">shopping</option>
 						<option value="work">work</option>
 						<option value="hobby">hobby</option>
 					</select>
 					<button className="button" onClick={this.handleAddTask}>
-						Add Task
+						Add task
 					</button>
 				</div>
 			</div>
