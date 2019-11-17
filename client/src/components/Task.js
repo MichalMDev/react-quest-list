@@ -50,7 +50,7 @@ const Task = (props) => {
             className="button"
             onClick={() => props.handleDeleteClick(token, _id)}
           >
-            <i class="flaticon flaticon-delete" />
+            <i className="flaticon flaticon-delete" />
           </div>
         </div>
       </div>

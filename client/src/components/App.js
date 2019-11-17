@@ -249,8 +249,6 @@ class App extends Component {
   // };
 
   render() {
-    console.log(this.state.tasks);
-
     return (
       <div className="app-container">
         <Menu
