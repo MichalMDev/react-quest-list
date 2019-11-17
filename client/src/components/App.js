@@ -3,6 +3,7 @@ import TaskList from "./TaskList";
 import AddTask from "./AddTask";
 import Menu from "./Menu";
 import "./icons/font/flaticon.css";
+import axios from "axios";
 
 import "./App.css";
 
@@ -18,7 +19,7 @@ class App extends Component {
     },
     tasks: [
       {
-        id: 0,
+        _id: 0,
         title: "Tytul0",
         text: "tekst0",
         category: "kategoria0",
@@ -27,7 +28,7 @@ class App extends Component {
         done: false,
       },
       {
-        id: 1,
+        _id: 1,
         title: "Tytul1",
         text: "tekst1",
         category: "kategoria1",
@@ -36,7 +37,7 @@ class App extends Component {
         done: false,
       },
       {
-        id: 3,
+        _id: 3,
         title: "Tytul2",
         text: "tekst2",
         category: "kategoria2",
@@ -56,19 +57,93 @@ class App extends Component {
   componentDidUpdate() {
     console.log("Edycja App js");
   }
-  getTasks = async () => {
-    const response = await fetch("localhost:4000/tasks");
-    const body = await response.json();
-    console.log(body);
 
-    if (response.status !== 200) {
-      throw Error(body.message);
-    }
-    return body;
+  // getTasks = (token) => {
+  //   token =
+  //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGNmZjFhMjQzZWUwNTJmNmNkMjAzYzgiLCJpYXQiOjE1NzM5ODEwODV9.qUY8RCpc6ABRX7qPw_ea8lKaFg9xDRw2fkiVne1L-s4";
+
+  //   fetch("http://localhost:3000/tasks", {
+  //     method: "GET",
+  //     mode: "no-cors",
+  //     async: true,
+  //     crossDomain: true,
+  //     headers: {
+  //       Accept: "*/*",
+  //       "Content-Type": "application/json",
+  //       Authorization: "Bearer " + token,
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then(
+  //       (tasks) =>
+  //         this.setState({
+  //           tasks,
+  //         }),
+  //       console.log(token),
+  //     );
+  // };
+
+  getTasksAxios = (token) => {
+    const api = "http://localhost:3000/tasks";
+    axios
+      .get(api, { headers: { Authorization: `Bearer ${token}` } })
+      .then((res) => {
+        console.log(res.data);
+        this.setState({
+          tasks: res.data,
+        });
+      });
   };
 
-  handleAddTask = (title, text, category) => {
-    console.log("Dodajemy nowy elem");
+  handleAddTask = (title, text, category, creationDate) => {
+    const token = this.state.data.token;
+
+    console.log("Adding App.js");
+
+    // let bodyParameters = {
+    //   title: title,
+    //   text: text,
+    //   category: category,
+    //   creationDate: creationDate,
+    //   done: false,
+    // };
+    // let config = {
+    //   headers: {
+    //     ["Authorization"]: "Bearer " + token,
+    //     Accept: "*/*",
+    //     "Content-Type": "application/json",
+    //   },
+    // };
+    // console.log(config);
+    // axios
+    //   .post("http://localhost:3000/tasks", bodyParameters, config)
+    //   .then((response) => {
+    //     console.log(response);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+
+    fetch("http://localhost:3000/tasks", {
+      method: "POST",
+      mode: "no-cors",
+      async: true,
+      crossDomain: true,
+      withCredentials: true,
+      credentials: "include",
+      headers: new Headers({
+        ["Accept"]: "*/*",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+        ["credentials"]: "include",
+      }),
+      body: JSON.stringify({
+        title: title,
+        text: text,
+        category: category,
+        creationDate: creationDate,
+      }),
+    }).then((res) => console.log(res.json()));
 
     const newTask = {
       id: this.counter,
@@ -100,6 +175,16 @@ class App extends Component {
     });
   };
 
+  handleDeleteClickAxios = (token, id) => {
+    const api = "http://localhost:3000/tasks/" + id;
+    axios
+      .delete(api, { headers: { Authorization: `Bearer ${token}` } })
+      .then((res) => {
+        console.log(res.data);
+        this.getTasksAxios(token);
+      });
+  };
+
   handleTaskDone = (id) => {
     const tasks = Array.from(this.state.tasks);
     tasks.forEach((task) => {
@@ -115,8 +200,8 @@ class App extends Component {
     });
   };
   handleLogInClick = (email, password) => {
-    email = "michux12@gmail.com";
-    password = "qweasd123";
+    // email = "michux12@gmail.com";
+    // password = "qweasd123";
     console.log("Trying to login ");
     fetch("http://localhost:3000/users/login", {
       // mode: "no-cors",
@@ -132,13 +217,16 @@ class App extends Component {
         this.setState({
           data,
         }),
-      );
+      )
+      .then(() => {
+        this.getTasksAxios(this.state.data.token);
+      });
   };
 
   handleLogOutClick = (token) => {
     console.log("Trying to logout");
     fetch("http://localhost:3000/users/logout", {
-      // mode: "no-cors",
+      mode: "no-cors",
       method: "POST",
       headers: {
         Accept: "application/json, text/plain, */*",
@@ -174,7 +262,7 @@ class App extends Component {
           <AddTask handleAddTask={this.handleAddTask} data={this.state.data} />
           <TaskList
             tasks={this.state.tasks}
-            handleDeleteClick={this.handleDeleteClick}
+            handleDeleteClick={this.handleDeleteClickAxios}
             handleEditClick={this.handleEditClick}
             handleTaskDone={this.handleTaskDone}
             data={this.state.data}

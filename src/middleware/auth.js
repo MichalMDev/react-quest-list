@@ -16,7 +16,7 @@ const auth = async (req, res, next) => {
 
     req.token = token;
     req.user = user;
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader(
       "Access-Control-Allow-Methods",
       "GET, POST, OPTIONS, PUT, PATCH, DELETE",
@@ -26,6 +26,7 @@ const auth = async (req, res, next) => {
       "X-Requested-With,content-type",
     );
     res.setHeader("Access-Control-Allow-Credentials", true);
+
     next();
   } catch (e) {
     res.status(401).send({ error: "Please authenticate." });

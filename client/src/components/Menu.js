@@ -18,7 +18,7 @@ const Menu = (props) => {
     loginContainer = <p>Logged</p>;
   } else {
     loginContainer = (
-      <div className="login-container">
+      <form className="login-container">
         <input placeholder="email"></input>
         <input placeholder="password" type="password"></input>
         <button
@@ -27,7 +27,7 @@ const Menu = (props) => {
         >
           Login
         </button>
-      </div>
+      </form>
     );
   }
 

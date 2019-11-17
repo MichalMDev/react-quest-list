@@ -3,7 +3,8 @@ import React from "react";
 import "./Task.css";
 
 const Task = (props) => {
-  let { id, title, text, category, creationDate } = props.task;
+  let { _id, title, text, category, creationDate } = props.task;
+  let { token } = props.data;
 
   let year = new Date(creationDate).getFullYear();
   let month = new Date(creationDate).getUTCMonth() + 1;
@@ -32,7 +33,7 @@ const Task = (props) => {
             className="input"
             type="text"
             name="task-title"
-            id={id}
+            id={_id}
             value={title}
           />
 
@@ -45,7 +46,10 @@ const Task = (props) => {
           <div className="text-area">{text}</div>
         </div>
         <div className="buttons-container">
-          <div className="button" onClick={() => props.handleDeleteClick(id)}>
+          <div
+            className="button"
+            onClick={() => props.handleDeleteClick(token, _id)}
+          >
             <i class="flaticon flaticon-delete" />
           </div>
         </div>
