@@ -9,12 +9,13 @@ import "./App.css";
 class App extends Component {
   counter = 4;
   state = {
-    user: {
-      email: "",
-      name: "",
+    data: {
       token: "",
+      user: {
+        name: "",
+        email: "",
+      },
     },
-    data: null,
     tasks: [
       {
         id: 0,
@@ -125,14 +126,32 @@ class App extends Component {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ email: email, password: password }),
-      // body:({email:email, password:password})
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) =>
+        this.setState({
+          data,
+        }),
+      );
   };
 
   handleLogOutClick = (token) => {
-    console.log("Trying to LogOut ");
+    console.log("Trying to logout");
+    fetch("http://localhost:3000/users/logout", {
+      // mode: "no-cors",
+      method: "POST",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ token: token }),
+    })
+      .then((res) => res.json())
+      .then((data) =>
+        this.setState({
+          data,
+        }),
+      );
   };
 
   // 	if (response.status !== 200) {
@@ -149,15 +168,16 @@ class App extends Component {
         <Menu
           handleLogInClick={this.handleLogInClick}
           handleLogOutClick={this.handleLogOutClick}
-          user={this.user}
+          data={this.state.data}
         />
         <div className="interface-container">
-          <AddTask handleAddTask={this.handleAddTask} />
+          <AddTask handleAddTask={this.handleAddTask} data={this.state.data} />
           <TaskList
             tasks={this.state.tasks}
             handleDeleteClick={this.handleDeleteClick}
             handleEditClick={this.handleEditClick}
             handleTaskDone={this.handleTaskDone}
+            data={this.state.data}
           />
         </div>
       </div>
