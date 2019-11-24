@@ -95,85 +95,104 @@ class App extends Component {
       });
   };
 
-  handleAddTask = (title, text, category, creationDate) => {
-    const token = this.state.data.token;
-
-    console.log("Adding App.js");
-
-    // let bodyParameters = {
-    //   title: title,
-    //   text: text,
-    //   category: category,
-    //   creationDate: creationDate,
-    //   done: false,
-    // };
-    // let config = {
-    //   headers: {
-    //     ["Authorization"]: "Bearer " + token,
-    //     Accept: "*/*",
-    //     "Content-Type": "application/json",
-    //   },
-    // };
-    // console.log(config);
-    // axios
-    //   .post("http://localhost:3000/tasks", bodyParameters, config)
-    //   .then((response) => {
-    //     console.log(response);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-
-    fetch("http://localhost:3000/tasks", {
-      method: "POST",
-      mode: "no-cors",
-      async: true,
-      crossDomain: true,
-      withCredentials: true,
-      credentials: "include",
-      headers: new Headers({
-        ["Accept"]: "*/*",
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-        ["credentials"]: "include",
-      }),
-      body: JSON.stringify({
-        title: title,
-        text: text,
-        category: category,
-        creationDate: creationDate,
-      }),
-    }).then((res) => console.log(res.json()));
-
-    const newTask = {
-      id: this.counter,
-      title,
-      text,
-      category,
+  handleAddClickAxios = (token, title, text, category, creationDate) => {
+    const api = "http://localhost:3000/tasks/";
+    let data = {
+      title: title,
+      text: text,
+      category: category,
+      creationDate: creationDate,
       done: false,
-      finishDate: null,
-      creationDate: new Date().getTime(),
-      // new Date().toLocaleDateString().slice(0, 10) + ', ' + new Date().toLocaleTimeString().slice(0, 5)
     };
-    const newTasksList = [...this.state.tasks];
-    newTasksList.push(newTask);
-
-    this.setState({
-      tasks: newTasksList,
-    });
-    this.counter++;
-    return true;
+    axios
+      .post(api, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      })
+      .then(this.getTasksAxios(token));
   };
 
-  handleDeleteClick = (id) => {
-    this.handleTaskDone(id);
+  // handleAddTask = (title, text, category, creationDate) => {
+  //   const token = this.state.data.token;
 
-    let tasks = this.state.tasks.filter((task) => task.id !== id);
+  //   console.log("Adding App.js");
 
-    this.setState({
-      tasks,
-    });
-  };
+  //   // let bodyParameters = {
+  //   //   title: title,
+  //   //   text: text,
+  //   //   category: category,
+  //   //   creationDate: creationDate,
+  //   //   done: false,
+  //   // };
+  //   // let config = {
+  //   //   headers: {
+  //   //     ["Authorization"]: "Bearer " + token,
+  //   //     Accept: "*/*",
+  //   //     "Content-Type": "application/json",
+  //   //   },
+  //   // };
+  //   // console.log(config);
+  //   // axios
+  //   //   .post("http://localhost:3000/tasks", bodyParameters, config)
+  //   //   .then((response) => {
+  //   //     console.log(response);
+  //   //   })
+  //   //   .catch((error) => {
+  //   //     console.log(error);
+  //   //   });
+
+  //   fetch("http://localhost:3000/tasks", {
+  //     method: "POST",
+  //     mode: "no-cors",
+  //     async: true,
+  //     crossDomain: true,
+  //     withCredentials: true,
+  //     credentials: "include",
+  //     headers: new Headers({
+  //       ["Accept"]: "*/*",
+  //       "Content-Type": "application/json",
+  //       Authorization: "Bearer " + token,
+  //       ["credentials"]: "include",
+  //     }),
+  //     body: JSON.stringify({
+  //       title: title,
+  //       text: text,
+  //       category: category,
+  //       creationDate: creationDate,
+  //     }),
+  //   }).then((res) => console.log(res.json()));
+
+  // const newTask = {
+  //     id: this.counter,
+  //     title,
+  //     text,
+  //     category,
+  //     done: false,
+  //     finishDate: null,
+  //     creationDate: new Date().getTime(),
+  //     // new Date().toLocaleDateString().slice(0, 10) + ', ' + new Date().toLocaleTimeString().slice(0, 5)
+  //   };
+  //   const newTasksList = [...this.state.tasks];
+  //   newTasksList.push(newTask);
+
+  //   this.setState({
+  //     tasks: newTasksList,
+  //   });
+  //   this.counter++;
+  //   return true;
+  // };
+
+  // handleDeleteClick = (id) => {
+  //   this.handleTaskDone(id);
+
+  //   let tasks = this.state.tasks.filter((task) => task.id !== id);
+
+  //   this.setState({
+  //     tasks,
+  //   });
+  // };
 
   handleDeleteClickAxios = (token, id) => {
     const api = "http://localhost:3000/tasks/" + id;
@@ -242,12 +261,6 @@ class App extends Component {
       );
   };
 
-  // 	if (response.status !== 200) {
-  // 		throw Error(body.message);
-  // 	}
-  // 	return body;
-  // };
-
   render() {
     return (
       <div className="app-container">
@@ -257,7 +270,10 @@ class App extends Component {
           data={this.state.data}
         />
         <div className="interface-container">
-          <AddTask handleAddTask={this.handleAddTask} data={this.state.data} />
+          <AddTask
+            handleAddTaskAxios={this.handleAddClickAxios}
+            data={this.state.data}
+          />
           <TaskList
             tasks={this.state.tasks}
             handleDeleteClick={this.handleDeleteClickAxios}

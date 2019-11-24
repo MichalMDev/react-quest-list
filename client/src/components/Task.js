@@ -6,6 +6,9 @@ const Task = (props) => {
   let { _id, title, text, category, creationDate } = props.task;
   let { token } = props.data;
 
+  creationDate = Date.parse(creationDate);
+  console.log("czas w task.js " + creationDate);
+
   let year = new Date(creationDate).getFullYear();
   let month = new Date(creationDate).getUTCMonth() + 1;
   if (month < 10) {
@@ -17,7 +20,7 @@ const Task = (props) => {
   if (minutes < 10) {
     minutes = "0" + minutes;
   }
-  let data = year + "-" + month + "-" + day + ", " + hours + ":" + minutes;
+  let data = day + "-" + month + "-" + year + ", " + hours + ":" + minutes;
 
   if (category === "none") {
     category = "";
