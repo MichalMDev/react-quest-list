@@ -86,3 +86,9 @@
 .nav a:focus {
   border-bottom: 1px solid;
 }
+
+.app-logo {
+  line-height: 36px;
+  letter-spacing: 3px;
+  font-weight: bold;
+}

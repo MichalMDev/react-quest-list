@@ -38,7 +38,12 @@ class Menu extends Component {
     }
 
     if (user.name !== "") {
-      loginContainer = <p>Logged</p>;
+      loginContainer = (
+        <div>
+          <img src="./note.png" alt="Logo"></img>
+          <div className="app-logo">Reminder</div>
+        </div>
+      );
     } else {
       loginContainer = (
         <div className="login-container">
