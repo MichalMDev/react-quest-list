@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Reminder - register</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="./register.css">
+
+</head>
+<body>
+
+<div class="user">
+    <header class="user__header">
+        <img src="../note.png">
+        <h1>Reminder</h1>
+        <h2 class="user__title">Create account for Reminder App</h2>
+    </header>
+    
+    <form class="form">
+        <div class="form__group">
+            <input type="text" placeholder="Username" class="form__input" id="username" />
+        </div>
+        
+        <div class="form__group">
+            <input type="email" placeholder="Email" class="form__input" id="email"/>
+        </div>
+        
+        <div class="form__group">
+            <input type="password" placeholder="Password" class="form__input" id="password"/>
+        </div>
+        
+        <button class="btn" type="button" onclick="handleLogin()">Register</button>
+    </form>
+    <div class="loginInfo disable"></div>
+</div>
+
+  
+  <footer>
+    &copy Reminder App 2019
+</footer>
+<script  src="./register.js"></script>
+</body>
+
+</html>

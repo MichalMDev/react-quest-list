@@ -1,0 +1,11 @@
+* {
+  --colorBlue: #083d77;
+  --colorRed: rgba(255, 62, 65, 1);
+  --colorGrey: rgba(74, 74, 74, 1);
+  --colorDarkerGrey: rgba(34, 34, 34, 1);
+  --colorWhite: rgba(238, 245, 219, 1);
+}
+
+.footer-container {
+  text-align: center;
+}
