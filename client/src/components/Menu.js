@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import '../text-area-resize.js';
 import "./Menu.css";
+import logo from "./note.png"; // with import
 
 class Menu extends Component {
   state = {
@@ -39,8 +40,8 @@ class Menu extends Component {
 
     if (user.name !== "") {
       loginContainer = (
-        <div>
-          <img src="./note.png" alt="Logo"></img>
+        <div className="logo-container">
+          <img className="logo-image" src={logo} alt="Logo"></img>
           <div className="app-logo">Reminder</div>
         </div>
       );
@@ -72,9 +73,9 @@ class Menu extends Component {
 
     return (
       <nav class="nav">
+        {loginContainer}
         <div class="nav-container">
           <ul>
-            {loginContainer}
             <li>
               <a href="/tasks">
                 <i class="flaticon flaticon-list" />

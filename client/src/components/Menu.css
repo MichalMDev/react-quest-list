@@ -19,16 +19,16 @@
 .nav .navMessage {
   font-weight: bold;
 }
-.nav-container .login-container {
+.nav .login-container {
   display: flex;
   justify-content: space-around;
 }
-.nav-container .login-container input {
+.nav .login-container input {
   display: block;
   color: #e7e7e7;
   font-size: 12px;
   margin: 3px;
-  border-radius: 15px;
+  border-radius: 6px;
 
   padding-left: 8px;
   outline: none;
@@ -36,21 +36,21 @@
   background-color: transparent;
 }
 
-.nav-container .login-container .loginButton {
+.nav .login-container .loginButton {
   width: 15%;
-  margin: 5px 0px 5px 20px;
+  margin: 5px 10px 5px 10px;
   display: inline-block;
   cursor: pointer;
   text-align: center;
   padding: 8px;
   border: 1px solid;
-  border-radius: 15px;
+  border-radius: 6px;
   font-size: 15px;
   transition: 0.5s all;
   background-color: transparent;
   outline: none;
 }
-.nav-container .login-container .loginButton:hover {
+.nav .login-container .loginButton:hover {
   background-color: white;
   color: var(--colorDarkerGrey);
 }
@@ -86,7 +86,13 @@
 .nav a:focus {
   border-bottom: 1px solid;
 }
-
+.logo-container {
+  display: flex;
+  justify-content: center;
+}
+.logo-image {
+  height: 30px;
+}
 .app-logo {
   line-height: 36px;
   letter-spacing: 3px;
