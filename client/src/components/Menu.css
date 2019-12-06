@@ -1,100 +1,122 @@
-* {
+body {
+  margin: 0;
+  padding: 0;
   --colorBlue: #083d77;
   --colorRed: rgba(255, 62, 65, 1);
   --colorGrey: rgba(74, 74, 74, 1);
   --colorDarkerGrey: rgba(34, 34, 34, 1);
   --colorWhite: rgba(238, 245, 219, 1);
 }
-
-.nav {
+.navigation-bar {
+  background-color: var(--colorDarkerGrey);
   width: 100%;
-
-  margin: 10px 0;
-  margin-bottom: 10px;
-}
-.nav-container {
-  width: 100%;
-  margin-bottom: 5px;
-}
-.nav .navMessage {
-  font-weight: bold;
-}
-.nav .login-container {
-  display: flex;
-  justify-content: space-around;
-}
-.nav .login-container input {
-  display: block;
-  color: #e7e7e7;
-  font-size: 12px;
-  margin: 3px;
-  border-radius: 6px;
-
-  padding-left: 8px;
-  outline: none;
-  border: 1px solid;
-  background-color: transparent;
-}
-
-.nav .login-container .loginButton {
-  width: 15%;
-  margin: 5px 10px 5px 10px;
-  display: inline-block;
-  cursor: pointer;
   text-align: center;
-  padding: 8px;
-  border: 1px solid;
   border-radius: 6px;
-  font-size: 15px;
+  margin: 10px 0px;
+}
+
+.navigation-bar .login-container {
+  padding: 10px;
+}
+
+.navigation-bar .login-container input {
+  margin: 5px;
+  padding: 6px;
+  border-radius: 6px;
+  background-color: transparent;
+  outline: none;
+  color: white;
+  border: 2px solid white;
+}
+
+.navigation-bar .login-container button {
+  border-radius: 6px;
+  width: 100px;
+  padding: 6px;
+  background-color: transparent;
+  cursor: pointer;
   transition: 0.5s all;
   background-color: transparent;
   outline: none;
+  border: 2px solid white;
+  color: white;
 }
-.nav .login-container .loginButton:hover {
+
+.navigation-bar .login-container button:hover {
   background-color: white;
-  color: var(--colorDarkerGrey);
+  color: black;
 }
-.nav ul {
+
+.navigation-bar .navigation-container {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0px auto;
+}
+
+.navigation-bar .navigation-container .logo-container {
+  display: flex;
+  color: white;
   justify-content: space-between;
 
-  width: 60%;
-  list-style: none;
-  margin: auto;
+  height: 70px;
 }
-
-.nav li {
-  padding: 0 5px;
-}
-
-.nav a {
-  display: flex;
-  justify-content: center;
-  padding: 5px;
-  padding-right: 10px;
-
-  color: #fff;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: 1s ease;
-}
-
-.nav ul li a i {
-  padding-right: 10px;
-}
-.nav a:hover,
-.nav a:focus {
-  border-bottom: 1px solid;
-}
-.logo-container {
-  display: flex;
-  justify-content: center;
-}
-.logo-image {
-  height: 30px;
-}
-.app-logo {
-  line-height: 36px;
-  letter-spacing: 3px;
+.navigation-bar .navigation-container .logo-container p {
   font-weight: bold;
+  letter-spacing: 3px;
+  line-height: 70px;
+  margin-right: 10px;
+}
+
+.navigation-bar .navigation-container .logo-container img {
+  height: 100%;
+}
+
+.navigation-container ul {
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  display: inline-block;
+}
+
+.navigation-container li {
+  list-style-type: none;
+  padding: 0px;
+
+  display: inline;
+}
+
+.navigation-bar li a {
+  color: white;
+  font-size: 16px;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  line-height: 70px;
+  padding: 5px 15px;
+  transition: 0.5s all;
+}
+.navigation-bar li a:hover {
+  color: black;
+  background-color: white;
+}
+.flaticon {
+  margin-right: 8px;
+}
+.flaticon:hover {
+  color: black;
+}
+
+.hidden {
+  display: none;
+}
+.login-info {
+  margin: 0;
+  color: red;
+}
+.info {
+  margin: 10px;
+
+  color: white;
 }

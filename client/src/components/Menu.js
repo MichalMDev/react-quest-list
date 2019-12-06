@@ -27,10 +27,17 @@ class Menu extends Component {
   };
 
   render() {
-    let { token, user } = this.props.data;
+    let { token, error, user } = this.props.data;
 
     let welcomeMessage = "";
     let loginContainer = "";
+    let errorInfo = "";
+
+    if (error === true) {
+      errorInfo = (
+        <p class="login-info">Invalid email or password, try again</p>
+      );
+    }
 
     if (user.name === "") {
       welcomeMessage = "Welcome, please login to use the app";
@@ -38,69 +45,75 @@ class Menu extends Component {
       welcomeMessage = "Hi " + user.name + ". What to do?";
     }
 
-    if (user.name !== "") {
+    if (user.name === "") {
       loginContainer = (
-        <div className="logo-container">
-          <img className="logo-image" src={logo} alt="Logo"></img>
-          <div className="app-logo">Reminder</div>
+        <div>
+          <div className="login-container">
+            <input
+              placeholder="email"
+              name="email"
+              onChange={this.handleChange}
+            ></input>
+            <input
+              placeholder="password"
+              name="password"
+              type="password"
+              onChange={this.handleChange}
+            ></input>
+            <button
+              onClick={() =>
+                this.props.handleLogInClick(
+                  this.state.email,
+                  this.state.password,
+                )
+              }
+            >
+              Log in
+            </button>
+            {errorInfo}
+          </div>
         </div>
       );
     } else {
-      loginContainer = (
-        <div className="login-container">
-          <input
-            placeholder="email"
-            name="email"
-            onChange={this.handleChange}
-          ></input>
-          <input
-            placeholder="password"
-            name="password"
-            type="password"
-            onChange={this.handleChange}
-          ></input>
-          <button
-            className="loginButton"
-            onClick={() =>
-              this.props.handleLogInClick(this.state.email, this.state.password)
-            }
-          >
-            Login
-          </button>
-        </div>
-      );
+      loginContainer = "";
     }
 
     return (
-      <nav class="nav">
-        {loginContainer}
-        <div class="nav-container">
-          <ul>
-            <li>
-              <a href="/tasks">
-                <i class="flaticon flaticon-list" />
-                Tasks
-              </a>
-            </li>
-            <li>
-              <a href="/about">
-                <i class="" />
-                About
-              </a>
-            </li>
-            <li>
-              <a href="/">
-                <i
-                  class="flaticon flaticon-logout"
-                  onClick={() => this.props.handleLogOutClick(token)}
-                />
-                Log Out
-              </a>
-            </li>
-          </ul>
+      <div>
+        <div className="navigation-bar">
+          {loginContainer}
+          <p className="info">{welcomeMessage}</p>
+
+          <div className="navigation-container">
+            <div className="logo-container">
+              <p>Reminder</p>
+              <img src={logo} alt="Logo"></img>
+            </div>
+
+            <ul>
+              <li>
+                <a href="/tasks">
+                  <i className="flaticon flaticon-list" />
+                  Tasks
+                </a>
+              </li>
+
+              <li>
+                <a href="/account">Account</a>
+              </li>
+              <li>
+                <a href="/contact">Contact</a>
+              </li>
+              <li>
+                <a href="" onClick={() => this.props.handleLogOutClick(token)}>
+                  <i className="flaticon flaticon-logout" />
+                  Log Out
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <p class="navMessage">{welcomeMessage}</p>
-      </nav>
+      </div>
     );
   }
 }

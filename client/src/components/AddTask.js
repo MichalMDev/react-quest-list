@@ -35,13 +35,7 @@ class AddTask extends Component {
 
   handleAddTask = (token, title, text, category, creationDate) => {
     creationDate = new Date();
-    let add = this.props.handleAddTaskAxios(
-      token,
-      title,
-      text,
-      category,
-      creationDate,
-    );
+    this.props.handleAddTaskAxios(token, title, text, category, creationDate);
     this.setState({
       id: null,
       text: "",

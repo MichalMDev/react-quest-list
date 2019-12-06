@@ -13,6 +13,7 @@ class App extends Component {
   state = {
     data: {
       token: "",
+      error: false,
       user: {
         name: "",
         email: "",
@@ -131,6 +132,15 @@ class App extends Component {
       )
       .then(() => {
         this.getTasksAxios(this.state.data.token);
+      })
+      .catch((error) => {
+        this.setState((prevState) => ({
+          data: {
+            // object that we want to update
+            ...prevState.data, // keep all other key-value pairs
+            error: true,
+          },
+        }));
       });
   };
 
