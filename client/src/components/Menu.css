@@ -52,6 +52,7 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   margin: 0px auto;
+  padding-bottom: 10px;
 }
 
 .navigation-bar .navigation-container .logo-container {
